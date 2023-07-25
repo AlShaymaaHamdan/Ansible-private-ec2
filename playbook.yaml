@@ -1,0 +1,17 @@
+- name: create public ec2
+  hosts: localhost
+  tasks:
+    - name: create public ec2
+      ec2:
+        key_name: ansible
+        region: us-east-1
+        instance_type: t2.micro
+        image: ami-05548f9cecf47b442
+        instance_tags:
+          Name: public_ec2
+        network:
+          vpc_id: vpc-014241ae95838a0ee
+          vpc_subnet_id: subnet-0890f477b08247b04
+          assign_public_ip: yes
+        count: 1
+        instance_profile_name: ansible-ec2-role
