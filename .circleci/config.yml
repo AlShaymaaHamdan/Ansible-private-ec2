@@ -22,7 +22,7 @@ jobs:
       - run:
           name: Run Ansible playbook
           command: |
-            ansible-galaxy collection install gaurav_gupta_gtm.aws_ec2
+            ansible-galaxy collection install amazon.aws
             ansible-playbook --private-key=$HOME/.ssh/ansible playbook.yaml 
             
   
