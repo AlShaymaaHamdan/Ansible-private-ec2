@@ -22,7 +22,7 @@ jobs:
       - run:
           name: Run Ansible playbook
           command: |
-            ansible-galaxy collection install amazon.aws
+            ansible-galaxy collection install community.aws
             ansible-playbook --private-key=$HOME/.ssh/ansible playbook.yaml 
             
   
