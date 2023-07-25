@@ -7,7 +7,7 @@ jobs:
             - "6d:74:fa:05:28:84:73:d2:3b:2b:bf:cd:78:a2:6b:98"
   build:
     docker:
-      - image: shaymaa12/docker-ansible-python:v1
+      - image: shaymaa12/docker-ansible-python:lts
     steps:
       - checkout
       - setup_remote_docker
@@ -24,7 +24,7 @@ jobs:
           command: |
             ansible-galaxy collection install amazon.aws:==3.3.1 --force
             ansible-galaxy collection install community.aws
-            ansible-playbook --private-key=$HOME/.ssh/ansible playbook.yaml 
+            ansible-playbook -i inventory.yaml --private-key=$HOME/.ssh/ansible playbook.yaml 
             
   
 workflows:
