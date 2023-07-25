@@ -1,0 +1,34 @@
+version: 2
+jobs:
+  deploy-job:
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "6d:74:fa:05:28:84:73:d2:3b:2b:bf:cd:78:a2:6b:98"
+  build:
+    docker:
+      - image: shaymaa12/docker-ansible-python
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      - run:
+          name: Build and push Docker image
+          command: |
+            docker build -t $username/coffee:$CIRCLE_BUILD_NUM . 
+            docker login -u $username -p $user
+            docker push $username/coffee:$CIRCLE_BUILD_NUM 
+            
+      - run:
+          name: Run Ansible playbook
+          command: |
+            ansible-playbook -i inventory.yaml --private-key=$HOME/.ssh/aws -e "CIRCLE_BUILD_NUM=$CIRCLE_BUILD_NUM username=$username" playbook.yaml 
+            
+  
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build:
+          context:
+            - DockerHub
