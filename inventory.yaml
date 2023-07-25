@@ -1,0 +1,2 @@
+[aws]
+publicEc2 ansible_host={{ public_ip }} ansible_user={{ ansible_user }} ansible_ssh_common_args='-o StrictHostKeyChecking=no'
