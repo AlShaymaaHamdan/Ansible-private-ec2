@@ -1,4 +1,4 @@
-- name: create public ec2
+- name: EC2
   hosts: localhost
   tasks:
     - name: create public ec2
