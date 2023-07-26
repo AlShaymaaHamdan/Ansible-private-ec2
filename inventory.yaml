@@ -1,2 +1,2 @@
 [aws]
-publicEc2 ansible_host=3.83.99.112 ansible_user=ubuntu ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+publicEc2 ansible_host=3.86.91.219 ansible_user=ubuntu ansible_ssh_common_args='-o StrictHostKeyChecking=no'
