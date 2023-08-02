@@ -20,6 +20,7 @@
       security_group: sg-0926613821c4df4ba
       exact_count: 1
       secret_key: "{{ AWS_SECRET_ACCESS }}"
+      session_token: "{{ AWS_ACCESS_KEY_ID }}"
     register: private_ec2
 
   - ansible.builtin.pause:
