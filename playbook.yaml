@@ -19,6 +19,7 @@
       vpc_subnet_id: subnet-0f77b074a1a2f2454
       security_group: sg-0926613821c4df4ba
       exact_count: 1
+      secret_key: {{ AWS_SECRET_ACCESS }}
     register: private_ec2
 
   - ansible.builtin.pause:
