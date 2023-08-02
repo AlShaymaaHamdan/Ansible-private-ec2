@@ -1,5 +1,5 @@
 - name: EC2
-  hosts: localhost
+  hosts: public_ec2
   become: true
   tasks:
   - name: Ensure boto and boto3 modules are installed
