@@ -1,5 +1,5 @@
 - name: EC2
-  hosts: public_ec2
+  hosts: localhost
   tasks:
   - name: Ensure boto and boto3 modules are installed
     pip:
