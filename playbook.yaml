@@ -1,37 +1,35 @@
-- name: Play one - Create private EC2 and get its ip
-  hosts: publicEc2
+- name: EC2
+  hosts: localhost
   become: true
   tasks:
-  - name: Install boto3 and botocore with pip3 module
+  - name: Ensure boto and boto3 modules are installed
     pip:
-      name: 
+      name: "{{ item }}"
+    with_items:
       - boto3
       - botocore
-      executable: pip-3.7
+    delegate_to: 18.212.26.130
+
   - name: create private ec2
     amazon.aws.ec2_instance:
       name: private_ec2
       key_name: ansible
       region: us-east-1
       instance_type: t2.micro
-      image_id: ami-05548f9cecf47b442
-      network:
-        subnet_id: subnet-0f77b074a1a2f2454
-        assign_public_ip: false
-        security_group: sg-0926613821c4df4ba
+      image_id: ami-053b0d53c279acc90
+      vpc_subnet_id: subnet-0f77b074a1a2f2454
+      security_group: sg-0926613821c4df4ba
       exact_count: 1
     register: private_ec2
 
   - ansible.builtin.pause:
       seconds: 30
   - name: Add the private EC2 instance to the host group
-    add_host:
-      name: "{{ private_ec2 | json_query('results[*].instances[*].private_ip_address') }} "
-      groups: aws
+    template:
+        src: template.j2
+        dest: inventory.yaml
+    become: yes
 
-  - name: Second Task - Print the full output
+  - name: Print the full output
     ansible.builtin.debug:
       var: private_ec2
-
-- name: play two - configure private EC2
-  hosts: private_ec2
