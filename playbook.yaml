@@ -13,7 +13,7 @@
   #     path: /home/id_rsa
   #   become: yes
   - name: clone my github repo
-    ansile.builtin.git:
+    ansible.builtin.git:
       repo: https://github.com/AlShaymaaHamdan/Ansible-private-ec2.git
       dest: ~
       
