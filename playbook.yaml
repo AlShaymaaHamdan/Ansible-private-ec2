@@ -15,7 +15,7 @@
   - name: clone my github repo
     ansible.builtin.git:
       repo: https://github.com/AlShaymaaHamdan/Ansible-private-ec2.git
-      dest: ~
+      dest: /home
       
   - name: create private ec2
     amazon.aws.ec2_instance:
