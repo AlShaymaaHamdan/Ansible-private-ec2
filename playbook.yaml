@@ -11,6 +11,7 @@
   - name: Generate an OpenSSH keypair with the default values (4096 bits, rsa)
     community.crypto.openssh_keypair:
       path: /home/id_rsa
+    become: yes
     
   - name: create private ec2
     amazon.aws.ec2_instance:
