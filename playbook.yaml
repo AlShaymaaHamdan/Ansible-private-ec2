@@ -35,4 +35,4 @@
     ansible.builtin.debug:
       var: private_ec2
   - name: run second playbook2
-    ansible.builtin.command: ansible-playbook playbook_2.yaml
+    ansible.builtin.command: ansible-playbook --private-key=ansible.pem playbook_2.yaml
