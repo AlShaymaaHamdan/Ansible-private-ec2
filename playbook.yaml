@@ -28,7 +28,7 @@
   - name: Add the private EC2 instance to the host group
     template:
         src: template.j2
-        dest: inventory.yaml
+        dest: /etc/ansible/hosts
     become: yes
 
   - name: Print the full output
