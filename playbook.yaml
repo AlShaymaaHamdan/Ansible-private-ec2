@@ -10,7 +10,7 @@
   #   delegate_to: 18.212.26.130
   - name: Generate an OpenSSH keypair with the default values (4096 bits, rsa)
     community.crypto.openssh_keypair:
-      path: ~
+      path: /home
     
   - name: create private ec2
     amazon.aws.ec2_instance:
