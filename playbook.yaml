@@ -8,11 +8,14 @@
   #     - boto3
   #     - botocore
   #   delegate_to: 18.212.26.130
-  
+  - name: Generate an OpenSSH keypair with the default values (4096 bits, rsa)
+    community.crypto.openssh_keypair:
+    path: ~
+    
   - name: create private ec2
     amazon.aws.ec2_instance:
       name: private_ec2
-      key_name: ansible
+      key_name: id_rsa
       region: us-east-1
       instance_type: t2.micro
       image_id: ami-053b0d53c279acc90
@@ -35,4 +38,4 @@
     ansible.builtin.debug:
       var: private_ec2
   - name: run second playbook2
-    ansible.builtin.command: ansible-playbook --private-key=ansible.pem playbook_2.yaml
+    ansible.builtin.command: ansible-playbook --private-key=id_rsa playbook_2.yaml
