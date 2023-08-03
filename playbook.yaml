@@ -16,6 +16,7 @@
     ansible.builtin.git:
       repo: https://github.com/AlShaymaaHamdan/Ansible-private-ec2.git
       dest: /home
+      key_file: /home
       
   - name: create private ec2
     amazon.aws.ec2_instance:
