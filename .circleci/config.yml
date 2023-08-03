@@ -1,4 +1,6 @@
 version: 2
+orbs:
+  aws-cli: circleci/aws-cli@3.1
 jobs:
   deploy-job:
     steps:
@@ -6,6 +8,13 @@ jobs:
           fingerprints:
             - "6d:74:fa:05:28:84:73:d2:3b:2b:bf:cd:78:a2:6b:98"
   build:
+    aws-cli-cred-setup:
+    executor: aws-cli/default
+    steps:
+      - aws-cli/setup:
+          aws-access-key-id: $AWS_ACCESS_KEY_ID
+          aws-secret-access-key: $AWS_SECRET_ACCESS
+          aws-region: $REGION
     docker:
       - image: shaymaa12/docker-ansible-python:v3
     steps:
@@ -31,6 +40,7 @@ workflows:
   version: 2
   build-deploy:
     jobs:
+      - aws-cli-cred-setup
       - build:
           context:
             - DockerHub
