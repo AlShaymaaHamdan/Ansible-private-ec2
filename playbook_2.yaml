@@ -19,10 +19,10 @@
         name: "{{ username }}/nodeapp_ansible:{{ CIRCLE_BUILD_NUM }}"
         source: pull
 
-   - name: Create container
-     docker_container:
-       name: "node"
-       image: "{{ username }}/nodeapp_ansible:{{ CIRCLE_BUILD_NUM }}"
-       state: present
-       ports:
-         - "3000:3000"
+  - name: Create container
+    docker_container:
+      name: "node"
+      image: "{{ username }}/nodeapp_ansible:{{ CIRCLE_BUILD_NUM }}"
+      state: present
+      ports:
+        - "3000:3000"
