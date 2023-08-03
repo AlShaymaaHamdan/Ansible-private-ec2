@@ -14,7 +14,7 @@
   #   become: yes
   - name: clone my github repo
     ansible.builtin.git:
-      repo: https://github.com/AlShaymaaHamdan/Ansible-private-ec2.git
+      repo: git@github.com:AlShaymaaHamdan/Ansible-private-ec2.git
       dest: /home
       key_file: /home
       
