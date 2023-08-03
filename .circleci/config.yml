@@ -23,7 +23,7 @@ jobs:
           name: Run Ansible playbook
           command: |
             ansible-playbook -i inventory.yaml --private-key=$HOME/.ssh/ansible -e "AWS_SECRET_ACCESS=$AWS_SECRET_ACCESS AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" playbook.yaml 
-            ansible-playbook --private-key=$HOME/.ssh/ansible -e "CIRCLE_BUILD_NUM=$CIRCLE_BUILD_NUM username=$username" playbook_2.yaml 
+             
 
             
   
